@@ -1,0 +1,917 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+
+
+
+body, html, .App, #root, .outer {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* */
+
+
+
+li {
+    list-style-type: none;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}
+
+.flexGrow {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+
+
+
+
+
+
+/* */
+
+.icon-home{
+  display: flex;
+  color: white
+}
+
+.container-checkup{
+  font-size: 50;
+}
+
+.container-note{
+  background-color: rgb(53,53,56);
+  height: 100%;
+}
+
+.container-dash{
+  background-color: rgb(53,53,56);
+  height: auto;
+}
+
+.comtainer-profile{
+  background-color: rgb(53,53,56);
+  height: 100%;
+}
+
+.container-timeline{
+  background-color: rgb(53,53,56);
+  height: auto;
+}
+.container-login{
+  background-color: rgb(53,53,56);
+  height: 100%;
+}
+
+.container-signup{
+  background-color: rgb(53,53,56);
+  height: 110%;
+}
+.profile-name{
+  display: flex;
+}
+
+.profile{
+  width: 600px;
+  margin-top: 7.5%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+  text-align: left;
+}
+
+.form-login {
+  width: 600px;
+  margin-top: 7.5%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  transition: all .3s;
+  text-align: left;
+
+}
+
+
+.form-signup {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 20px 55px 20px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+  text-align: left;
+}
+
+.Firstname-Lastname,.birthday,.height-weight{
+  display: flex;
+}
+
+
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #000000;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+
+.new-total-death{
+  margin-left: 5.5%;
+  margin-top: 20px;
+  display: flex;
+}
+.total-patient-death{
+  margin-left: 5.5%;
+  margin-top: 20px;
+  display: flex;
+}
+
+.new-patient-case{
+  width: 25%;
+  height: 170px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 105px;
+}
+
+.total-case{
+  width: 40%;
+  height: 170px;
+  background-color: rgb(255, 151, 55);
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 105px;
+  margin-left: 2%;
+
+}
+
+.new-Recovered-case{
+  width: 25%;
+  height: 170px;
+  background-color: rgb(27,165,85);
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 105px;
+  margin-left: 2%;
+
+}
+
+.new-Recovered-header, .new-case-header,.header-total-case{
+  font-size: 40px;
+  color: white;
+}
+
+.num-Recovered-case{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+  color: rgb(27,165,85);
+}
+
+.num-new-case,.patient,.num-total-patient,.new-patient-case{
+  color: rgb(240, 193, 23);
+  background-color: rgb(240, 193, 23);
+}
+
+.new-Recovered-case,.Recovered,.num-total-Recovered{
+  background-color: rgb(27,165,85);
+  color: rgb(27,165,85);
+}
+
+.num-new-case{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+}
+
+
+
+.pic-total-case{
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.num-total-case{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+  color: rgb(255, 151, 55);
+  
+}
+
+.patient{
+  width: 30%;
+  height: 160px;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  border-radius: 15px;
+}
+
+.pic-total-patient{
+  width: 60px;
+  height: 45px;
+  margin-left: 5px;
+}
+
+.num-total-patient{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+}
+
+.Recovered{
+  width: 30%;
+  height: 160px;
+  margin-left: 2%;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  border-radius: 15px;
+  background-color: rgb(27,165,85);
+}
+
+.pic-total-Recovered{
+  width: 60px;
+  height: 55px;
+  margin-left: 5px;
+}
+
+.num-total-Recovered{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+  color: rgb(27,165,85);
+}
+
+.Death{
+  width: 30%;
+  height: 160px;
+  margin-left: 2%;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  border-radius: 15px;
+  background-color: rgb(234,87,113);
+}
+
+.pic-total-Death{
+  width: 60px;
+  height: 55px;
+  margin-left: 5px;
+}
+
+.num-total-Death{
+  background-color: white;
+  border-radius: 15px;
+  width: 90%;
+  margin:auto;
+  font-size: 50px;
+  color: rgb(234,87,113);
+}
+
+.all-btn{
+  display: flex;
+  margin-left: 24%;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.knowledge-news-line1{
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+  text-align: -webkit-center;
+  
+  
+}
+
+/* .knowledge-news-line2{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  
+  
+} */
+
+.page-break{
+  color: white;
+  border-top: solid 2px #ffffff;
+  border-bottom: solid 2px #ffffff;
+  max-width: 80%;
+  margin-top: 7%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size:100px;
+}
+
+.headcase{
+  color: white;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  border-bottom: solid 2px #ffffff;
+  max-width: 80%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size:100px;
+}
+
+.headimg{
+  width:100%;
+  opacity: 80%;
+
+}
+
+.hompital-img-head{
+  background-color: #666666;
+  background-image: url('https://www.thaiins.com/storage/photos/shares/Articles/20210628/Blog-covid-P2.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.hompital{  
+
+  padding-top: 350px;
+  padding-bottom: 350px;
+  color: rgb(255, 255, 255);
+  font: bold 150px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  
+}
+
+
+.carousel-inner{
+  max-width: 1400px;
+  max-height: 1000px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
+
+.end{
+  color: white;
+  border-top: solid 2px #ffffff;
+  max-width: 80%;
+  margin-top: 7%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size:100px;
+}
+
+.hompital-lastline{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.CU{
+  background-color: #666666;
+  height:100%;
+}
+
+.vac-img-head{
+  background-color: #666666;
+  background-image: url('https://rtmagazine.com/wp-content/uploads/2019/07/Vaccine.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.vaccine{  
+
+  padding-top: 350px;
+  padding-bottom: 350px;
+  color: rgb(255, 255, 255);
+  font: bold 150px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  
+}
+
+.container-vac{
+  background-color: #666666;
+}
+
+.headvac{
+  color: rgb(255, 255, 255);
+}
+
+.bodyvac{
+  color: rgb(255, 255, 255);
+  border-bottom: solid 2px #ffffff;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headline-vac{
+  font: bold 80px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  margin-top: 5%;
+  text-align: left;
+  margin-left: 200px;
+  
+}
+
+.bodyline-vac{
+  font: bold 25px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 300px;
+  max-width: 76%;
+  margin-top: 2%;
+}
+
+.sectionhead1{
+  margin-top: 5%;
+  font: bold 25px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+}
+
+.sectionhead2{
+  margin-top: 5%;
+  font: bold 25px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+}
+
+.sectionhead3{
+  margin-top: 5%;
+  font: bold 25px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+}
+
+.sectionhead4{
+  margin-top: 5%;
+  font: bold 25px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+}
+
+.sectionbody1{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+}
+
+.sectionbody2{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+}
+
+.sectionbody3{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+}
+
+.sectionbody4{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+}
+
+.setButtonAll{
+  margin-top: 3%;
+  max-width: 60%;
+  margin-left: 350px;
+  
+}
+
+.setButton1{
+  display: flex;
+}
+
+.setButton2{
+  display: flex;
+  margin-top: 3%;
+}
+
+.setButton3{
+  display: flex;
+  margin-top: 3%;
+}
+
+.setButton4{
+  display: flex;
+  margin-top: 3%;
+}
+
+.setButton5{
+  display: flex;
+  margin-top: 3%;
+}
+
+.setButton6{
+  display: flex;
+  margin-top: 3%;
+}
+
+.vaccine1-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.vaccine2-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.vaccine3-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.vaccine4-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.vaccine5-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.vaccine6-word{
+  font: bold 20px cursive;
+  text-shadow: 2px 2px 4px rgba(64, 64, 64, 1);
+  text-align: left;
+  margin-left: 50px;
+  max-width: 60%;
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+}
+
+.checkup-banner{
+  background-color: #666666;
+  background-image: url('https://cdn.discordapp.com/attachments/710765707683561543/901154625498005514/notee2.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.header-checkup{
+  max-width: 80%;
+  padding-top: 100px;
+  padding-bottom:40px;
+  padding-left: 200px;
+  margin-top: 130px;
+  color: white;
+  font-size:75px;
+  text-align: left;
+}
+
+.checkep-detail{
+  color: white;
+  max-width: 85%;
+  padding-left: 200px;
+  padding-bottom: 40px;
+  text-align: left;
+}
+
+.vaccine-banner{
+  background-color: #666666;
+  background-image: url('https://cdn.discordapp.com/attachments/710765707683561543/901154627196686397/notee1.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.vac-header{
+  max-width: 80%;
+  padding-top: 100px;
+  padding-bottom:40px;
+  padding-left: 200px;
+  margin-top: 130px;
+  color: white;
+  font-size:75px;
+  text-align: left;
+}
+
+.vac-detail{
+  color: white;
+  max-width: 85%;
+  padding-left: 200px;
+  padding-bottom: 40px;
+  text-align: left;
+}
+
+.end-vac{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+
+
+.timeline-post{
+  display: grid;
+  width: 60%;
+  margin: 2.5% auto 1% auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 20px 50px 20px 50px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.timeline-header{
+  transform: translate(-70px, -5px);
+  font-size: 55px;
+  border-radius: 10px;
+  padding-left: 60px;
+  color: white;
+  width: 113%;
+  background-color: #167bff;
+}
+
+.timeline-date{
+  margin-top: 10px;
+  display: flex;
+}
+
+.timeline-Day,.timeline-Mouth,.timeline-Year,.timeline-Time{
+  width: 15%;
+  border-radius: 10px;
+  font-size: 25px;
+  padding-left: 5px;
+  border-color: rgb(206,212,218);
+  
+  transition: all .3s;
+}
+
+.timeline-Mouth{
+  margin-left: 10px;
+}
+
+.timeline-Time{
+  margin-left: 10px;
+}
+
+.timeline-Year{
+  margin-left: 10px;
+}
+
+.timeline-place{
+  width: 100%;
+  margin-top: 7px;
+  border-radius: 10px;
+  font-size: 25px;
+  border-color: rgb(206,212,218);
+}
+
+.record{
+  width: 60%;
+  height: 600px;
+  padding-bottom: 50px;
+  margin: 2% auto 0% auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 20px 50px 20px 50px;
+  border-radius: 15px;
+  text-align: left;
+  transform: translate(0, -20px);
+}
+
+.gridpost{
+  display: grid;
+  width: 100%;
+  height: 500px;
+  overflow: auto;
+  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.note-button:hover{
+  cursor: pointer;
+  
+}
+
+.note-blue-header{
+  background-color: rgb(13,110,253);
+  color: white;
+  font-size: 50px;
+  border-radius: 15px;
+}
+
+.note-red-header{
+  background-color: rgb(234,87,113);
+  color: white;
+  font-size: 50px;
+  border-radius: 15px;
+}
+
+.note-green-header{
+  background-color: rgb(27,165,85);
+  color: white;
+  font-size: 50px;
+  border-radius: 15px;
+}
+
+.note-yellow-header{
+  background-color: rgb(240, 193, 23);
+  color: white;
+  font-size: 50px;
+  border-radius: 15px;
+}
+
+.note-green-detail{
+  color: white;
+  background-color: rgb(27,165,85);
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.note-yellow-detail{
+  color: white;
+  background-color: rgb(240, 193, 23);
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.note-red-detail{
+  color: white;
+  background-color: rgb(234,87,113);
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.note-blue-detail{
+  background-color: rgb(13,110,253);
+  color: white;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.form-check-input:hover{
+  cursor: pointer;
+  background-color: rgb(123, 176, 255);
+}
