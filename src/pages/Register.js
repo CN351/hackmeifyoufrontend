@@ -13,6 +13,15 @@ const Register = () => {
     const userRef = useRef();
     const emailRef = useRef();
     const errRef = useRef();
+    const nameRef = useRef();
+    const phoneRef = useRef();
+    const cardIDRef = useRef();
+
+
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [cardID, setCardID] = useState('');
+
 
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
@@ -66,7 +75,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd, email }),
+                JSON.stringify({ user, pwd, email, name, phone, cardID }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -159,6 +168,52 @@ const Register = () => {
                                 onBlur={() => setEmailFocus(false)}
                             />
 
+                            <label htmlFor="name">
+                                name:
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                className="form-control"
+                                placeholder="Enter name"
+                                ref={nameRef}
+                                autoComplete="off"
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
+                                required
+                                aria-describedby="uidnote"
+                            />
+                            <label htmlFor="phone">
+                                phone:
+                            </label>
+                            <input
+                                type="text"
+                                id="phone"
+                                className="form-control"
+                                placeholder="Enter phone"
+                                ref={phoneRef}
+                                autoComplete="off"
+                                onChange={(e) => setPhone(e.target.value)}
+                                value={phone}
+                                required
+                                aria-describedby="uidnote"
+                            /><label htmlFor="name">
+                                card ID:
+                            </label>
+                            <input
+                                type="text"
+                                id="cardID"
+                                className="form-control"
+                                placeholder="Enter cardID"
+                                ref={cardIDRef}
+                                autoComplete="off"
+                                onChange={(e) => setCardID(e.target.value)}
+                                value={cardID}
+                                required
+                                aria-describedby="uidnote"
+                            />
+
+
                             <label htmlFor="password">
                                 Password:
                                 <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
@@ -217,7 +272,7 @@ const Register = () => {
 
                         <button
                             disabled={!validName || !validPwd || !validMatch ? true : false}
-                            type="submit" 
+                            type="submit"
                             className="btn btn-primary btn-lg btn-block"
                             style={{ marginTop: 10, width: 150 }}
                         >
