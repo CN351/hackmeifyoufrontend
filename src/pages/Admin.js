@@ -4,6 +4,7 @@ import Users from './Users';
 import { Button, Container, Input, Typography, Box, LinearProgress, Modal } from "@mui/material";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import CardModal from '../components/CardModal'
+import { axiosPrivate } from '../api/axios';
 
 const columns = [
     { id: 'username', label: 'Username', minWidth: 100 },
@@ -43,6 +44,38 @@ const Admin = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [data, setData] = React.useState();
     const [open, setOpen] = React.useState(false);
+    const [image, setImage] = React.useState();
+
+    const IMAGE_URL = '/image/save';
+
+    const Uploadfiles = async () => {
+        try {
+            await axiosPrivate.post(IMAGE_URL,
+                JSON.stringify({ image: image }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            alert("upload success")
+            setImage()
+        } catch (error) {
+            console.log(error);
+            alert("upload error")
+        }
+    }
+
+    function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        console.log(file.type);
+        reader.onloadend = async function () {
+            //send
+            setImage(reader.result)
+            console.log('RESULT', reader.result)
+        }
+        reader.readAsDataURL(file);
+    }
 
     const handleOpen = (e) => {
         console.log(e);
@@ -75,9 +108,13 @@ const Admin = () => {
                 <Typography>Home page image</Typography>
                 {Line()}
                 <Button variant="contained" component="label">
-                    Upload File
-                    <Input type="file" hidden />
+                    Insert File
+                    <Input type="file" hidden onChange={(e) => encodeImageFileAsURL(e.target)} />
                 </Button>
+                {image ? <Button variant="contained" component="label" onClick={() => Uploadfiles()}>
+                    Upload File
+                </Button> : <></>}
+
 
                 {/* /////////// */}
                 <Typography>Users</Typography>

@@ -1,17 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../components/Navbar'
 import CovCases from "../components/CovCases.js"
 import News from '../components/News';
 import { Link, Redirect } from 'react-router-dom';
+import axios from '../api/axios';
+import Login from './Login';
 
 export default function Dashboard() {
     const [CheckUpDetail, setCheckUpDetail] = React.useState('Check the initial symptoms of COVID-19, in order to get the right treatment.')
+    const [image, setImage] = useState('')
+
+    useEffect(async () => {
+        if (image === '') {
+            await axios.get('/image').then(res => {
+                console.log(res.data[0]);
+                setImage(res.data[0])
+            })
+        }
+    }, [image])
     return (
         <>
             <div className='container-dash'>
-                
-                <div className='hompital-img-head'>
+
+                <div className='hompital-img-head' style={{
+                    backgroundImage: `url(${image.image})`
+                }}>
                     <p className='hompital'>HOMPITAL</p>
+
                 </div>
 
                 <div className='headcase'>
@@ -36,7 +51,7 @@ export default function Dashboard() {
                         <p>HOMPITAL</p>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

@@ -20,7 +20,7 @@ const Register = () => {
 
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-    const [cardID, setCardID] = useState('');
+    const [cardid, setCardid] = useState('');
 
 
     const [user, setUser] = useState('');
@@ -75,7 +75,7 @@ const Register = () => {
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd, email, name, phone, cardID }),
+                JSON.stringify({ user, pwd, email, name, phone, cardid }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -202,13 +202,13 @@ const Register = () => {
                             </label>
                             <input
                                 type="text"
-                                id="cardID"
+                                id="cardid"
                                 className="form-control"
-                                placeholder="Enter cardID"
+                                placeholder="Enter cardid"
                                 ref={cardIDRef}
                                 autoComplete="off"
-                                onChange={(e) => setCardID(e.target.value)}
-                                value={cardID}
+                                onChange={(e) => setCardid(e.target.value)}
+                                value={cardid}
                                 required
                                 aria-describedby="uidnote"
                             />
