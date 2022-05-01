@@ -43,7 +43,7 @@ const News = () => {
         <p className='vac-header'>Vaccine</p>
         <p className='vac-detail'>{VacDetail}</p>
         <Link to="/vaccine" style={{ color: 'white' }}>
-          <button type="button" class="btn btn-outline-light" style={{ fontSize: 20, marginLeft: 1150, padding: 12.5, borderRadius: 25, marginBottom: 140 }}>
+          <button type="button" class="btn btn-outline-light" style={{ fontSize: 20, marginLeft: 200, padding: 12.5, borderRadius: 25, marginBottom: 140 }}>
             Learn more
           </button>
         </Link>

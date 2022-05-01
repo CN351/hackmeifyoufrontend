@@ -394,6 +394,7 @@ li {
   margin-left: auto;
   margin-right: auto;
   font-size:100px;
+  text-align: center;
 }
 
 .headcase{
@@ -405,6 +406,7 @@ li {
   margin-left: auto;
   margin-right: auto;
   font-size:100px;
+  text-align: center;
 }
 
 .headimg{
@@ -424,7 +426,7 @@ li {
 }
 
 .hompital{  
-
+  text-align: center;
   padding-top: 350px;
   padding-bottom: 350px;
   color: rgb(255, 255, 255);
@@ -456,6 +458,7 @@ li {
 .hompital-lastline{
   padding-top: 100px;
   padding-bottom: 100px;
+  text-align: center;
 }
 
 .CU{
@@ -915,3 +918,4 @@ li {
   cursor: pointer;
   background-color: rgb(123, 176, 255);
 }
+

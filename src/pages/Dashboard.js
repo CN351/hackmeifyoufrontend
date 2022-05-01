@@ -39,7 +39,7 @@ export default function Dashboard() {
                     <p className='header-checkup'>Check up</p>
                     <p className='checkep-detail'>{CheckUpDetail}</p>
                     <Link to="/checkup" style={{ color: 'white' }}>
-                        <button type="button" class="btn btn-outline-light" style={{ fontSize: 20, marginLeft: 1150, padding: 12.5, borderRadius: 25, marginBottom: 140 }}>
+                        <button type="button" class="btn btn-outline-light" style={{ fontSize: 20,marginLeft:200,padding: 12.5, borderRadius: 25, marginBottom: 140 }}>
                             Check up now
                         </button>
                     </Link>
