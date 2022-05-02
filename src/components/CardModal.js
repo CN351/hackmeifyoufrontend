@@ -1,7 +1,9 @@
 import React, { useEffect } from "react"
 import { Button, Typography, Box, LinearProgress, Modal, TextField, ButtonBase, Grid } from "@mui/material";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const CardModal = ({ open, onClose, data }) => {
+    const axiosPrivate = useAxiosPrivate();
     const [username, setUsername] = React.useState('');
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
@@ -17,12 +19,33 @@ const CardModal = ({ open, onClose, data }) => {
             setCardid(data.cardid)
         }
     }, [data])
-    const handleUpdate = () => {
+    const handleUpdate = async () => {
         const data = { username, name, email, phone, cardid };
-        console.log('to update data');
+        try {
+            const response = await axiosPrivate.put('/users/update', JSON.stringify(data)
+            );
+            console.log(response);
+
+        } catch (error) {
+            console.log(error);
+            alert("update error")
+        }
+
     }
-    const handleDelete = () => {
-        console.log('to delete data');
+    const handleDelete = async (user) => {
+        console.log(user);
+        try {
+            const response = await axiosPrivate.delete('/users/delete/' + user,
+                {}, {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            }
+            );
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+            alert("delete error")
+        }
     }
 
     return (
@@ -44,7 +67,7 @@ const CardModal = ({ open, onClose, data }) => {
                             <Button onClick={() => handleUpdate()}>SAVE</Button>
                         </Grid>
                         <Grid item xs={6}>
-                            <Button onClick={() => handleDelete()}>DELETE</Button>
+                            <Button onClick={() => handleDelete(username)}>DELETE</Button>
                         </Grid>
                     </Grid>
                 </Box>

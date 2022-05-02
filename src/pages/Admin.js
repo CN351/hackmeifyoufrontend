@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Link } from "react-router-dom";
-import Users from './Users';
-import { Button, Container, Input, Typography, Box, LinearProgress, Modal } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Button, Container, Input, Typography, Box, LinearProgress } from "@mui/material";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from "@mui/material";
 import CardModal from '../components/CardModal'
-import { axiosPrivate } from '../api/axios';
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const columns = [
     { id: 'username', label: 'Username', minWidth: 100 },
@@ -14,37 +14,20 @@ const columns = [
     { id: 'cardid', label: 'CardID', minWidth: 150, align: 'right' }
 ];
 
-function createData(username, name, email, phone, cardid) {
-
-    return { username, name, email, phone, cardid };
-}
-
-const rows = [
-    createData('United States', 'US', 'won@won.com', 11111, 9833520),
-    createData('India', 'IN', 'won@won.com', 11111, 3287263),
-    createData('China', 'CN', 'won@won.com', 11111, 9596961),
-    createData('Italy', 'IT', 'won@won.com', 11111, 301340),
-    createData('Canada', 'CA', 'won@won.com', 11111, 9984670),
-    createData('Australia', 'AU', 'won@won.com', 11111, 7692024),
-    createData('Germany', 'DE', 'won@won.com', 11111, 357578),
-    createData('Ireland', 'IE', 'won@won.com', 11111, 70273),
-    createData('Mexico', 'MX', 'won@won.com', 11111, 1972550),
-    createData('Japan', 'JP', 'won@won.com', 11111, 377973),
-    createData('France', 'FR', 'won@won.com', 11111, 640679),
-    createData('United Kingdom', 'GB', 'won@won.com', 11111, 242495),
-    createData('Russia', 'RU', 'won@won.com', 11111, 17098246),
-    createData('Nigeria', 'NG', 'won@won.com', 11111, 923768),
-    createData('Brazil', 'BR', 'won@won.com', 11111, 8515767),
-];
 
 
 const Admin = () => {
-    console.log(rows);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [data, setData] = React.useState();
     const [open, setOpen] = React.useState(false);
     const [image, setImage] = React.useState();
+    const [users, setUsers] = useState();
+    const [loading, setLoading] = useState(true);
+
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const IMAGE_URL = '/image/save';
 
@@ -64,6 +47,34 @@ const Admin = () => {
             alert("upload error")
         }
     }
+
+    useEffect(() => {
+        let isMounted = true;
+        const controller = new AbortController();
+
+        const getUsers = async () => {
+            try {
+                const response = await axiosPrivate.get('/users/data', {
+                    signal: controller.signal
+                });
+                console.log(response.data);
+                isMounted && setUsers(response.data);
+                setLoading(false)
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+
+        getUsers();
+
+        return () => {
+            isMounted = false;
+            controller.abort();
+        }
+    }, [open])
+
+    console.log(users);
 
     function encodeImageFileAsURL(element) {
         var file = element.files[0];
@@ -121,57 +132,60 @@ const Admin = () => {
                 {Line()}
 
 
-
-                <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                    <TableContainer sx={{ maxHeight: 440 }}>
-                        <Table stickyHeader aria-label="sticky table">
-                            <TableHead>
-                                <TableRow>
-                                    {columns.map((column) => (
-                                        <TableCell
-                                            key={column.id}
-                                            align={column.align}
-                                            style={{ minWidth: column.minWidth }}
-                                        >
-                                            {column.label}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            </TableHead>
-                            <TableBody >
-                                {rows
-                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .map((row) => {
-                                        return (
-                                            <TableRow hover role="checkbox" tabIndex={-1} key={row.code} onClick={() => handleOpen(row)}  >
-                                                {
-                                                    columns.map((column) => {
-                                                        const value = row[column.id];
-                                                        return (
-                                                            <TableCell key={column.id} align={column.align}>
-                                                                {column.format && typeof value === 'number'
-                                                                    ? column.format(value)
-                                                                    : value}
-                                                            </TableCell>
-                                                        );
-                                                    })
-                                                }
-                                            </TableRow>
-                                        );
-                                    })}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[10, 25, 100]}
-                        component="div"
-                        count={rows.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>
+                {loading ? (<>loading...</>) :
+                    (<>
+                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                            <TableContainer sx={{ maxHeight: 440 }}>
+                                <Table stickyHeader aria-label="sticky table">
+                                    <TableHead>
+                                        <TableRow>
+                                            {columns.map((column) => (
+                                                <TableCell
+                                                    key={column.id}
+                                                    align={column.align}
+                                                    style={{ minWidth: column.minWidth }}
+                                                >
+                                                    {column.label}
+                                                </TableCell>
+                                            ))}
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody >
+                                        {users
+                                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                            .map((row) => {
+                                                return (
+                                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code} onClick={() => handleOpen(row)}  >
+                                                        {
+                                                            columns.map((column) => {
+                                                                const value = row[column.id];
+                                                                return (
+                                                                    <TableCell key={column.id} align={column.align}>
+                                                                        {column.format && typeof value === 'number'
+                                                                            ? column.format(value)
+                                                                            : value}
+                                                                    </TableCell>
+                                                                );
+                                                            })
+                                                        }
+                                                    </TableRow>
+                                                );
+                                            })}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                            <TablePagination
+                                rowsPerPageOptions={[10, 25, 100]}
+                                component="div"
+                                count={users.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                            />
+                        </Paper>
+                    </>)
+                }
                 <CardModal
                     data={data}
                     open={open}
